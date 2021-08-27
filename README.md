@@ -23,6 +23,22 @@ provider "kubernetes" {
 To upgrade from the *kubernetes_alpha* provider, to using the **Beta** channel of the *kubernetes* provider, you can follow the instructions as provided here:
 https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/guides/alpha-manifest-migration-guide
 
+## How to use this module
+
+Create a module in your Terraform repository, and pin a release (for example) like this:
+
+```terraform
+module "cilium_network_policies" {
+  source = "git://github.com/evry-ace/tf-cilium-network-policies.git?ref=vX.Y.Z"
+
+  default_cilium_network_policies_enabled = true
+  namespace                               = "namespace"
+
+}
+```
+
+And you should be off to the races :)
+
 ## Module idiosyncrasies
 
 *None*
