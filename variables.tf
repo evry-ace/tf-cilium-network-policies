@@ -9,4 +9,3 @@ variable "namespace" {
   description = "The Kubernetes namespace where the resource(s) will be created"
   type        = string
 }
-
