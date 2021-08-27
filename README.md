@@ -31,8 +31,8 @@ https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/guides/
 
 | Name | Version |
 |------|---------|
-| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | ~> 0.13 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | ~> 2.4.1 |
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | >= 0.13 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.4.1 |
 
 ## Modules
 
