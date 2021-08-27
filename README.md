@@ -27,6 +27,22 @@ https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/guides/
 
 *None*
 
+## How to use this module
+
+Create a module in your Terraform repository, and pin a release (for example) like this:
+
+```terraform
+module "cilium_network_policies" {
+  source = "git://github.com/evry-ace/tf-cilium-network-policies.git?ref=vX.Y.Z"
+
+  default_cilium_network_policies_enabled = true
+  namespace                               = "namespace"
+
+}
+```
+
+And you should be off to the races :)
+
 ## Providers
 
 | Name | Version |
