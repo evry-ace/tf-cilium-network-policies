@@ -29,7 +29,7 @@ Create a module in your Terraform repository, and pin a release (for example) li
 
 ```terraform
 module "cilium_network_policies" {
-  source = "https://github.com/evry-ace/tf-cilium-network-policies.git?ref=vX.Y.Z"
+  source = "github.com/evry-ace/tf-cilium-network-policies.git?ref=vX.Y.Z"
 
   default_cilium_network_policies_enabled = true
   namespace                               = "namespace"
