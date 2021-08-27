@@ -6,7 +6,7 @@ A Terraform module for implementing Cilium Network Policies
 
 ### Technical description of module
 
-In order to use this module, you need to use the Terraform *kubernetes* provider in a version higher than, or equal to, version `2.4.1`. In addition, Terraform must be of version `0.13.0` or above.
+In order to use this module, you need to use the Terraform *kubernetes* provider in a version higher than, or equal to, version `2.4.1`. In addition, Terraform must be of version `0.13` or above.
 
 An additional requirement is that the **Beta** feature `kubernetes_manifest` is enabled for the *kubernetes* provider:
 
@@ -31,7 +31,7 @@ https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/guides/
 
 | Name | Version |
 |------|---------|
-| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | ~> 0.13.0 |
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | ~> 0.13 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | ~> 2.4.1 |
 
 ## Modules
