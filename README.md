@@ -31,13 +31,41 @@ Create a module in your Terraform repository, and pin a release (for example) li
 module "cilium_network_policies" {
   source = "github.com/evry-ace/tf-cilium-network-policies.git?ref=vX.Y.Z"
 
-  default_cilium_network_policies_enabled = true
-  namespace                               = "namespace"
+  parameter(s) = value
 
 }
 ```
 
 And you should be off to the races :)
+
+### Create DNS visibility network policies
+
+You can create a DNS visibility network policy for individual namespaces, or for all namespaces in your Kubernetes cluster. If you set `enable_dns_visibility` to `true`, the deciding factor is whether or not the `dns_namespace` parameter is assigned any value.
+
+If `dns_namespace` is omitted, or set like `dns_namespace = ""`, a DNS visibility network policy will be created in all namespaces in your Kubernetes cluster.
+
+*Example, creating in all namespaces*
+
+```terraform
+...
+
+  enable_dns_visibility = true
+
+}
+```
+
+If `dns_namspace` is set, the network policy will only be created for the defined value.
+
+*Example, create for one or more namespaces*
+
+```terraform
+...
+
+  enable_dns_visibility = true
+  dns_namespace         = ["namespace1", "namespace2",]
+
+}
+```
 
 ## Module idiosyncrasies
 
@@ -64,8 +92,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_default_cilium_network_policies_enabled"></a> [default\_cilium\_network\_policies\_enabled](#input\_default\_cilium\_network\_policies\_enabled) | Define whether or not the Cilium network policies should be created. | `bool` | `false` | no |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Name of the Kubernetes namespace to install the Cilium Network Policies in | `string` | n/a | yes |
+| <a name="input_enable_dns_visibility"></a> [enable\_dns\_visiblity](#input\_enable\_dns\_visibility) | Define whether or not the DNS visibility Cilium network policy should be created. | `bool` | `false` | no |
+| <a name="input_dns_namespace"></a> [dns\_namspace](#input\_dns\_namspace) | Name of the Kubernetes namespace(s) to install the Cilium Network Policies in | `list(string)` | `[]`] | yes |
 
 ## Outputs
 
