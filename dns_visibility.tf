@@ -1,5 +1,17 @@
+data "kubernetes_all_namespaces" "all_namespaces" {}
+
+locals {
+  namespace = length(var.dns_namespace) == 0 ? data.kubernetes_all_namespaces.all_namespaces : var.dns_namespace
+
+  ns_map = zipmap(var.enable_dns_visibility ? ["true"] : ["false"], local.namespace)
+
+}
+
 resource "kubernetes_manifest" "dns_visibility" {
-  count = var.default_cilium_network_policies_enabled ? 1 : 0
+  for_each = {
+    for k, v in local.ns_map : k => v
+    if k == "true"
+  }
 
   manifest = {
     apiVersion = "cilium.io/v2"
@@ -7,7 +19,7 @@ resource "kubernetes_manifest" "dns_visibility" {
 
     metadata = {
       name      = "dns-visibility-policy"
-      namespace = var.namespace
+      namespace = each.value
     }
 
     spec = {
