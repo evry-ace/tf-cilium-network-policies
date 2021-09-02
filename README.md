@@ -92,7 +92,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_enable_dns_visibility"></a> [enable\_dns\_visiblity](#input\_enable\_dns\_visibility) | Define whether or not the DNS visibility Cilium network policy should be created. | `bool` | `false` | no |
+| <a name="input_enable_dns_visibility"></a> [enable\_dns\_visibility](#input\_enable\_dns\_visibility) | Define whether or not the DNS visibility Cilium network policy should be created. | `bool` | `false` | no |
 | <a name="input_dns_namespace"></a> [dns\_namspace](#input\_dns\_namspace) | Name of the Kubernetes namespace(s) to install the Cilium Network Policies in | `list(string)` | `[]`] | yes |
 
 ## Outputs
