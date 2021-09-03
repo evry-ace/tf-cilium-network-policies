@@ -1,12 +1,12 @@
 # Default variables
-variable "default_cilium_network_policies_enabled" {
-  description = "Define whether or not the Cilium Network Policies should be created."
+variable "enable_dns_visibility" {
+  description = "Define whether or not the Cilium Network Policies for DNS visibility should be created."
   type        = bool
   default     = false
 }
 
-variable "namespace" {
-  description = "The Kubernetes namespace where the resource(s) will be created"
-  type        = string
+variable "dns_namespaces" {
+  description = "The Kubernetes namespace(s) where the resource(s) will be created. If omitted, or set to empty, and enable_dns_visiblity is set to true, the policy will be created for all namespaces in the Kubernetes cluster."
+  type        = list(string)
+  default     = []
 }
-
