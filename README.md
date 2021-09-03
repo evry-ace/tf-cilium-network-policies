@@ -40,9 +40,9 @@ And you should be off to the races :)
 
 ### Create DNS visibility network policies
 
-You can create a DNS visibility network policy for individual namespaces, or for all namespaces in your Kubernetes cluster. If you set `enable_dns_visibility` to `true`, the deciding factor is whether or not the `dns_namespace` parameter is assigned any value.
+You can create a DNS visibility network policy for individual namespaces, or for all namespaces in your Kubernetes cluster. If you set `enable_dns_visibility` to `true`, the deciding factor is whether or not the `dns_namespaces` parameter is assigned any value.
 
-If `dns_namespace` is omitted, or set like `dns_namespace = ""`, a DNS visibility network policy will be created in all namespaces in your Kubernetes cluster.
+If `dns_namespaces` is omitted, or set like `dns_namespaces = ""`, a DNS visibility network policy will be created in all namespaces in your Kubernetes cluster.
 
 *Example, creating in all namespaces*
 
@@ -62,7 +62,7 @@ If `dns_namspace` is set, the network policy will only be created for the define
 ...
 
   enable_dns_visibility = true
-  dns_namespace         = ["namespace1", "namespace2",]
+  dns_namespaces         = ["namespace1", "namespace2",]
 
 }
 ```
@@ -93,7 +93,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_enable_dns_visibility"></a> [enable\_dns\_visibility](#input\_enable\_dns\_visibility) | Define whether or not the DNS visibility Cilium network policy should be created. | `bool` | `false` | no |
-| <a name="input_dns_namespace"></a> [dns\_namspace](#input\_dns\_namspace) | Name of the Kubernetes namespace(s) to install the Cilium Network Policies in | `list(string)` | `[]`] | yes |
+| <a name="input_dns_namespaces"></a> [dns\_namespaces](#input\_dns\_namespaces) | Name of the Kubernetes namespace(s) to install the Cilium Network Policies in | `list(string)` | `[]`] | yes |
 
 ## Outputs
 

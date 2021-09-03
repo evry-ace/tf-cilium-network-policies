@@ -1,16 +1,14 @@
 data "kubernetes_all_namespaces" "all_namespaces" {}
 
 locals {
-  namespace = length(var.dns_namespace) == 0 ? data.kubernetes_all_namespaces.all_namespaces : var.dns_namespace
-
-  ns_map = zipmap(var.enable_dns_visibility ? ["true"] : ["false"], local.namespace)
+  namespaces = length(var.dns_namespaces) == 0 ? data.kubernetes_all_namespaces.all_namespaces.namespaces : var.dns_namespaces
 
 }
 
 resource "kubernetes_manifest" "dns_visibility" {
   for_each = {
-    for k, v in local.ns_map : k => v
-    if k == "true"
+    for k in local.namespaces : k => k
+    if var.enable_dns_visibility == true
   }
 
   manifest = {
