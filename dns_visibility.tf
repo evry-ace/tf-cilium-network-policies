@@ -75,6 +75,7 @@ resource "kubernetes_manifest" "dns_visibility" {
             ]
           },
         ]
+      }
       ingress = [
         {
           fromEntities = [
