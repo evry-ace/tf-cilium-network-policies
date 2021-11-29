@@ -66,14 +66,15 @@ resource "kubernetes_manifest" "dns_visibility" {
       endpointSelector = {
         matchLabels = {}
         /* make sure we can restrict egress */
-        matchExpressions = {
-          key      = "networking/use-networkPolicies"
-          operator = "NotIn"
-          values = [
-            "true",
-          ]
-        }
-      }
+        matchExpressions = [
+          {
+            key      = "networking/use-networkPolicies"
+            operator = "NotIn"
+            values   = [
+              "true",
+            ]
+          },
+        ]
       ingress = [
         {
           fromEntities = [
