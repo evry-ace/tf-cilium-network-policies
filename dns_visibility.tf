@@ -69,7 +69,9 @@ resource "kubernetes_manifest" "dns_visibility" {
         matchExpressions = {
           key      = "networking/use-networkPolicies"
           operator = "NotIn"
-          values   = "true"
+          values = [
+            "true",
+          ]
         }
       }
       ingress = [
